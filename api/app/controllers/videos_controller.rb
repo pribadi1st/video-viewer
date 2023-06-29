@@ -6,7 +6,7 @@ class VideosController < ApplicationController
     @videos = Video.all
     @categories = Category.all
 
-    render json: { videos: @videos, :categories => @categories }
+    render_json
   end
 
   # GET /videos/1
@@ -49,6 +49,6 @@ class VideosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def video_params
-    params.fetch(:video, {} )
+    params.fetch(:video, {} ).permit(:title, :category_id, :video)
   end
 end

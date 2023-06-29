@@ -1,9 +1,3 @@
-# The Code Challenge 
-Welcome to Caspar Code Challenge! 
-
-You have already received the requirement for this little project.
-Please consider this repository as a boilerplate for the future enhancements.
-
 ## TODO
 - [ ] Make sure the application works as expected.
 - [ ] Consider the performance.
@@ -14,6 +8,11 @@ Please consider this repository as a boilerplate for the future enhancements.
 ---
 
 ## Setup
+- Do Docker-compose up
+- Make sure everything is running 
+- Create db by running `docker-compose run api rake db:create`
+- Create schema by running `docker-compose run api rake db:migrate`
+- Seeding DB `docker-compose run api rake db:seed`
 
 ### Prerequisites
 

@@ -6,7 +6,6 @@ const UploadPage = () => {
 
   return (
     <div className="upload-page">
-
       <nav className="navbar bg-light app-navbar">
         <div className="container-fluid">
           <a className="navbar-brand h2">Upload Video</a>
@@ -15,7 +14,6 @@ const UploadPage = () => {
           </Link>
         </div>
       </nav>
-
       <VideoForm />
     </div>
   );
