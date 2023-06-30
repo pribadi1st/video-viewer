@@ -11,10 +11,10 @@ const Video = (props) => {
         controls
         src={url}
         preload="none"
-        poster={thumbnail}
         title={title}
         className="video-player"
       />
+      {/* poster={thumbnail} */}
 
       <div className="card-body">
         {title}

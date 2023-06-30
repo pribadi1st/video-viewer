@@ -12,7 +12,12 @@ const VideoForm = props => {
 
   useEffect(() => {
     listCategories()
-      .then(items => { setCategories(items) })
+      .then(response => { 
+        const { status, data} = response;
+        if(status === 200) {
+          setCategories(data) 
+        }
+      })
   }, [])
 
   const submitForm = (event) => {
@@ -24,7 +29,7 @@ const VideoForm = props => {
       .then(data => {
         setMessage("Video successfully uploaded");
         setTitle("");
-        event.target.file.value = null;
+        event.target.video.value = null;
         setCategoryId("");
       })
       .catch(errorMessage => {
@@ -62,9 +67,9 @@ const VideoForm = props => {
           File
         </label>
         <input
-          id="file"
+          id="video"
           type="file"
-          name="file"
+          name="video"
           accept="video/mp4, video/mov"
           required
           className="form-control"

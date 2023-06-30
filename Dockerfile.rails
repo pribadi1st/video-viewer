@@ -3,6 +3,8 @@ FROM ruby:3.0.0 as rails-toolbox
 WORKDIR /app
 COPY ./api .
 
+RUN rm -rf /app/tmp/pids/server.pid
+
 RUN gem install rails bundler
 RUN bundle install
 

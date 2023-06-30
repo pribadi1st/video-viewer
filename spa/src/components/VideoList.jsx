@@ -7,8 +7,10 @@ const VideoList = () => {
 
   useEffect(() => {
     listVideos()
-      .then(data => {
-        setVideos(data)
+      .then(response => {
+        const { data, status } = response
+        if(status === 200)
+          setVideos(data)
       });
   }, []);
 
@@ -21,8 +23,7 @@ const VideoList = () => {
           <Video
             key={video.id}
             title={video.title}
-            url={video.file.url}
-            thumbnail={video.file.thumbnails.large}
+            url={video.url}
           />
         ))
       )}

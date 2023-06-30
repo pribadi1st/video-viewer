@@ -10,7 +10,7 @@ export const listCategories = () => {
 }
 
 export const listVideos = () => {
-  return fetch('/api/videos',
+  return fetch('http://localhost:3000/videos',
     {
       method: "GET",
       headers: {

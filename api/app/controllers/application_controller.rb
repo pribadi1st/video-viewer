@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
+  include ActiveStorage::SetCurrent
     def render_json(params = nil, status = 200, msg = 'Success')
         response = {
           message: msg,

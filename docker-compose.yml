@@ -15,7 +15,7 @@ services:
     image: redis:7.0.8
 
   api:
-    tty: true
+    # tty: true
     stdin_open: true
     build:
       context: .

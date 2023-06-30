@@ -3,10 +3,21 @@ class VideosController < ApplicationController
 
   # GET /videos
   def index
-    @videos = Video.all
-    @categories = Category.all
+    videos = Video.all.map do |video|
+      {
+        id: video.id,
+        title: video.title,
+        category: {
+          text: video.category.name,
+          value: video.category.id
+        },
+        url: if video.video.attached?
+        rails_blob_url(video.video)
+        end
+      }
+    end
 
-    render_json
+    render_json(videos)
   end
 
   # GET /videos/1
@@ -16,14 +27,25 @@ class VideosController < ApplicationController
 
   # POST /videos
   def create
-    @video = Video.new(video_params)
+    video = Video.new
+    video.title = params[:title]
+    video.categories_id= params[:category_id]
+    video.video.attach({
+      io: params[:video],
+      filename: params[:video].original_filename,
+      content_type: params[:video].content_type
+    })
+    if video.save
+      render_json
+      else
+        render_json(nil, 422, "Cannot be procced")
+      end
 
-    binding.pry
-    if @video.save
-      render json: @video, status: :created, location: @video
-    else
-      render json: @video.errors, status: :unprocessable_entity
-    end
+    # if @video.save
+    #   render json: @video, status: :created, location: @video
+    # else
+    #   render json: @video.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /videos/1
@@ -37,7 +59,11 @@ class VideosController < ApplicationController
 
   # DELETE /videos/1
   def destroy
+    if @video.video.attached?
+      @video.video.purge
+    end
     @video.destroy
+    render_json
   end
 
   private
@@ -49,6 +75,6 @@ class VideosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def video_params
-    params.fetch(:video, {} ).permit(:title, :category_id, :video)
+    params.permit(:title, :video, :category_id)
   end
 end
