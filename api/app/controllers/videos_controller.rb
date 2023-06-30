@@ -12,8 +12,9 @@ class VideosController < ApplicationController
           value: video.category.id
         },
         url: if video.video.attached?
-        rails_blob_url(video.video)
-        end
+              rails_blob_url(video.video)
+            end,
+        thumbnails: video.get_thumbnails
       }
     end
 
@@ -36,6 +37,7 @@ class VideosController < ApplicationController
       content_type: params[:video].content_type
     })
     if video.save
+      video.generate_thumbnails(params[:video])
       render_json
       else
         render_json(nil, 422, "Cannot be procced")

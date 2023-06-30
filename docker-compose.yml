@@ -24,6 +24,8 @@ services:
     # platform: "linux/amd64"
     volumes:
       - ./api:/app
+      - './storage:/app/storage'
+      - './tmp:/app/tmp'
     ports:
       - "3000:3000"
     command: rails server --binding=0.0.0.0

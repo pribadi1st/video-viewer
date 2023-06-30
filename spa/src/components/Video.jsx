@@ -3,7 +3,7 @@ import React from "react";
 import "./Video.css";
 
 const Video = (props) => {
-  const { url, title, thumbnail } = props;
+  const { url, title, thumbnails } = props;
 
   return (
     <div className="card video">
@@ -13,8 +13,8 @@ const Video = (props) => {
         preload="none"
         title={title}
         className="video-player"
+        poster={thumbnails.large}
       />
-      {/* poster={thumbnail} */}
 
       <div className="card-body">
         {title}

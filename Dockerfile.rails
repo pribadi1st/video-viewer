@@ -1,11 +1,17 @@
 FROM ruby:3.0.0 as rails-toolbox
 
+RUN apt-get update && apt-get install -y \
+    imagemagick \
+    ffmpeg
+
 WORKDIR /app
 COPY ./api .
 
 RUN rm -rf /app/tmp/pids/server.pid
+# VOLUME ["/app/storage", "/app/tmp"]
 
 RUN gem install rails bundler
 RUN bundle install
+RUN chmod 777 /app/tmp
 
 ENTRYPOINT ["bundle", "exec"]

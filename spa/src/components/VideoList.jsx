@@ -24,6 +24,7 @@ const VideoList = () => {
             key={video.id}
             title={video.title}
             url={video.url}
+            thumbnails={video.thumbnails}
           />
         ))
       )}
