@@ -1,9 +1,22 @@
 import React from "react";
 
 import "./Video.css";
+interface VideoProps {
+  url: string
+  title: string
+  thumbnails: {
+    small: string
+    medium: string
+    large: string
+  }
+  category: {
+    id: number
+    name: string
+  }
+}
 
-const Video = (props) => {
-  const { url, title, thumbnails } = props;
+const Video = (props:VideoProps) => {
+  const { url, title, thumbnails, category } = props;
 
   return (
     <div className="card video">
@@ -17,7 +30,7 @@ const Video = (props) => {
       />
 
       <div className="card-body">
-        {title}
+        {category.name}
       </div>
     </div>
   );
