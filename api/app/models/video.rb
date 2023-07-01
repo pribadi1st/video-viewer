@@ -21,9 +21,9 @@ class Video < ApplicationRecord
 
         video_path = video_file.tempfile.path
 
-        generate_thumbnail(video_path, :thumbnail_small, 100)
-        generate_thumbnail(video_path, :thumbnail_medium, 300)
-        generate_thumbnail(video_path, :thumbnail_large, 500)
+        generate_thumbnail(video_path, :thumbnail_small, 64)
+        generate_thumbnail(video_path, :thumbnail_medium, 128)
+        generate_thumbnail(video_path, :thumbnail_large, 256)
     end
 
     private

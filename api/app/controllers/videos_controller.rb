@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: %i[show update destroy]
+  before_action :check_video, only: %i[create]
 
   # GET /videos
   def index
@@ -78,5 +79,19 @@ class VideosController < ApplicationController
   # Only allow a list of trusted parameters through.
   def video_params
     params.permit(:title, :video, :category_id)
+  end
+
+  def check_video
+    if params[:video].blank?
+      render_json(nil, 422, "Video can't be blank")
+    end
+    # check video type
+    if params[:video]&.content_type != 'video/mp4' && params[:video]&.content_type != 'video/mov'
+      render_json(nil, 422, "Video must be mp4 or mov")
+    end
+    # check video size
+    if params[:video]&.size.to_i > 200.megabytes
+      render_json(nil, 422, "Video size must be less than 200 megabytes")
+    end
   end
 end
