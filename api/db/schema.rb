@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_30_215438) do
+ActiveRecord::Schema.define(version: 2023_06_29_205344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,9 +54,6 @@ ActiveRecord::Schema.define(version: 2023_06_30_215438) do
     t.bigint "categories_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "thumb_small"
-    t.string "thumb_medium"
-    t.string "thumb_large"
     t.index ["categories_id"], name: "index_videos_on_categories_id"
   end
 
