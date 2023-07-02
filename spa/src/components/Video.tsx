@@ -10,8 +10,8 @@ interface VideoProps {
     large: string
   }
   category: {
-    id: number
-    name: string
+    text: string
+    value: number
   }
 }
 
@@ -30,7 +30,7 @@ const Video = (props:VideoProps) => {
       />
 
       <div className="card-body">
-        {category.name}
+        {category.text}
       </div>
     </div>
   );
