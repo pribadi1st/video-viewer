@@ -11,7 +11,7 @@ afterEach(()=> {
     cleanup();
 })
 
-const videoTestProps = { url:  'https://www.caspar-health.com', title: "shoulder exercise" }
+const videoTestProps = { url:  'https://www.youtube.com', title: "video youtube" }
 
 
 test('should render video component', ()=> {
