@@ -1,5 +1,6 @@
 .video {
   display: inline-block;
+  position: relative;
   margin: 0.5rem;
 }
 
