@@ -1,22 +1,11 @@
 import React from "react";
-
 import "./Video.css";
-interface VideoProps {
-  url: string
-  title: string
-  thumbnails: {
-    small: string
-    medium: string
-    large: string
-  }
-  category: {
-    text: string
-    value: number
-  }
-}
+import { IVideo } from "../types/video";
 
-const Video = (props:VideoProps) => {
-  const { url, title, thumbnails, category } = props;
+const Video = (props: {
+  video: IVideo
+}) => {
+  const { url, title, thumbnails, category } = props.video;
   const [show, setShow] = React.useState(false);
   const showTitle = (state: boolean = false) => {
     setShow(state)

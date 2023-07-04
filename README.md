@@ -1,12 +1,3 @@
-## TODO
-- [ ] Make sure the application works as expected.
-- [ ] Consider the performance.
-- [ ] If you're not familiar with React, feel free to replace it with your
-  own favorite js framework.
-- [ ] Follow best practices for code maintainability.
-
----
-
 ## Setup
 - Do Docker-compose up
 - Make sure everything is running 

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Video from "../components/Video";
+import Video from "./Video";
+import { IVideo } from "../types/video";
 import { listVideos } from "../services/API";
 
 const VideoList = () => {
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState<IVideo[]>([]);
 
   useEffect(() => {
     listVideos()
@@ -22,10 +23,7 @@ const VideoList = () => {
         videos.map((video) => (
           <Video
             key={video.id}
-            title={video.title}
-            url={video.url}
-            thumbnails={video.thumbnails}
-            category={video.category}
+            video={video}
           />
         ))
       )}
